@@ -3,19 +3,22 @@ class Solution {
        int n=nums.length;
        int low=0;
        int high=n-1;
-       int min=nums[low+(high-low)/2];
+       int ans =Integer.MAX_VALUE;;
        while(low<=high){
             int mid=low+(high-low)/2;
-            if(min>nums[mid]){
-                min=nums[mid];
+            if(nums[low]<=nums[high]){
+                ans=Math.min(ans,nums[low]);
+                break;
             }
-            if(nums[high]<=min){
+            if(nums[low]<=nums[mid]){
+                ans=Math.min(ans,nums[low]);
                 low=mid+1;
             }
             else{
                 high=mid-1;
+                ans=Math.min(ans,nums[mid]);
             }
        }
-       return min;
+       return ans;
     }
 }

@@ -15,6 +15,6 @@ class Solution {
                 low=mid+1;
             }
         }
-        return (int)ans;
+        return (int)high;
     }
 }

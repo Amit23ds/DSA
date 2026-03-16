@@ -1,20 +1,17 @@
 class Solution {
-    private boolean search(int[] nums,int k){
-        for(int i=0;i<nums.length;i++){
-            if(k==nums[i]){
-                return true;
-            }
-        }
-        return false;
-    }
     public int findKthPositive(int[] arr, int k) {
-        int n=arr.length;
-        ArrayList<Integer> list= new ArrayList<>();
-        for(int i=1;i<=n+k+1;i++){
-            if(!search(arr,i)){
-                list.add(i);
+        int low=0;
+        int high=arr.length-1;
+        while(low<=high){
+            int mid=(high+low)/2;
+            int missing = arr[mid]-(mid+1);
+            if(missing<k){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
             }
         }
-        return list.get(k-1);    
+        return low+k;
     }
 }

@@ -1,37 +1,34 @@
 class Solution {
-    private int maxElement(int[] nums){
+    private int maxEle(int[] nums){
         int max=nums[0];
         for(int i=0;i<nums.length;i++){
-            if(nums[i]>max){
+            if(max<nums[i]){
                 max=nums[i];
             }
         }
         return max;
     }
-    private long cal(int[] nums,int rate){
-        long count=0;
+    private long helper(int[] nums,int mid){
+        int ct=0;
         for(int i=0;i<nums.length;i++){
-            count+=Math.ceil((double)nums[i]/rate);
+            ct+=Math.ceil((double)nums[i]/mid);
         }
-        return count;
+        return ct;
     }
+
     public int minEatingSpeed(int[] piles, int h) {
-        int k=0;
         int low=1;
-        int high=maxElement(piles);
+        int high=maxEle(piles);
+        int n=piles.length;
         while(low<=high){
-            int mid=(low+high)/2;
-            long count=cal(piles,mid);
-            if(count<=h){
-                // left search space
-                k=mid;
+            int mid=low+(high-low)/2;
+            long res=helper(piles,mid);
+            if(res<=h){
                 high=mid-1;
-            }
-            else{
-                // right search space
+            }else{
                 low=mid+1;
             }
         }
-        return k;
+        return low;
     }
 }

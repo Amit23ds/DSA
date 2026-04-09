@@ -9,36 +9,15 @@
  * }
  */
 class Solution {
-    private ListNode removeTail(ListNode head){
-        if(head==null || head.next==null) return null;
+    public ListNode reverseList(ListNode head) {
         ListNode temp=head;
-        while(temp.next.next!=null){
-            temp=temp.next;
-        }
-        temp.next=null;
-        return head;
-    }
-    private ListNode addTail(ListNode head, int value){
-        if(head==null) return new ListNode(value);
-        ListNode temp=head;
-        while(temp.next!=null){
-            temp=temp.next;
-        }
-        ListNode newNode=new ListNode(value);
-        temp.next=newNode;
-        return head;
-    }
-    public ListNode reverseList(ListNode head) { 
-        ListNode temp=head;
-        ListNode newNode=null;
+        ListNode prev=null;
         while(temp!=null){
-            ListNode temp1=temp;
-            while(temp1.next!=null){
-                temp1=temp1.next;
-            }
-            newNode=addTail(newNode,temp1.val);
-            temp=removeTail(temp);
+            ListNode front=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=front;
         }
-        return newNode;
+        return prev;
     }
 }

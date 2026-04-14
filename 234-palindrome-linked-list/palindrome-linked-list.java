@@ -32,11 +32,13 @@ class Solution {
         ListNode temp=reverse(slow),first=head;
         while(first!=null && temp!=null){
             if(first.val!=temp.val){
+                reverse(temp);
                 return false;
             }
             first=first.next;
             temp=temp.next;
         }
+        reverse(temp);
         return true;
     }
 }

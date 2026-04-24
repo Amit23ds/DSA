@@ -3,26 +3,21 @@ class Solution {
         int low = 0;
         int high = nums.length - 1;
         int ans = Integer.MAX_VALUE;
-
         while (low <= high) {
-
             if (low == high)
                 return Math.min(ans, nums[low]);
 
             int mid = low + (high - low) / 2;
-
             if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
                 ans = Math.min(ans, nums[low]);
                 low++;
                 high--;
                 continue;
             }
-
             if (nums[low] < nums[high]) {
                 ans = Math.min(ans, nums[low]);
                 break;
             }
-
             if (nums[low] <= nums[mid]) {
                 ans = Math.min(ans, nums[low]);
                 low = mid + 1;
@@ -32,7 +27,6 @@ class Solution {
                 high = mid - 1;
             }
         }
-
         return ans;
     }
 }

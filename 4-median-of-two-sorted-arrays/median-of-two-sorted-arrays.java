@@ -7,12 +7,10 @@ class Solution {
         while(lo<=hi){
             int mid1 = (lo + hi) / 2;
             int mid2 = (n + m + 1) / 2 - mid1;
-
             int l1 = (mid1 == 0) ? 
                     Integer.MIN_VALUE : nums1[mid1 - 1];
             int r1 = (mid1 == n) ? 
                     Integer.MAX_VALUE : nums1[mid1];
-            
             int l2 = (mid2 == 0) ? 
                     Integer.MIN_VALUE : nums2[mid2 - 1];
             int r2 = (mid2 == m) ? 

@@ -1,27 +1,21 @@
 class Solution {
-    private int maxElement(int[] nums){
-        int max=0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]>max){
-                max=nums[i];
-            }
-        }
-        return max;
-    }
     public boolean isGood(int[] nums) {
-        int max=maxElement(nums);
-        int n=nums.length;
-        if(max+1!=n) return false;
-        HashMap<Integer,Integer> hm = new HashMap<>();
-        for(int i=0;i<n;i++){
-            hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
+        int n=0;
+        for(int num:nums){
+            n=Math.max(n,num);
         }
-        for(int i=1;i<max;i++){
-            if(!hm.containsKey(i)) return false;
-            if(hm.get(i)!=1) return false;
-        }
-        if(hm.get(max)!=2) return false;
+        int[] freq = new int[201];
 
-        return true;
+        if(nums.length!=n+1) return false;
+
+        for(int num:nums){
+            freq[num]++;
+        }
+
+        for(int i=1;i<n;i++){
+            if(freq[i]!=1) return false;
+        }
+
+        return freq[n]==2;
     }
 }

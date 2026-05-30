@@ -4,7 +4,11 @@ class Solution {
 
         while(r<nums.length){
             if(nums[r]==0) zero++;
-            while(zero>k){
+            // while(zero>k){
+            //     if(nums[l]==0) zero--;
+            //     l++;
+            // }
+            if(zero>k){
                 if(nums[l]==0) zero--;
                 l++;
             }

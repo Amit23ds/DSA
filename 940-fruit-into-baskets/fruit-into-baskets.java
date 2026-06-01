@@ -4,14 +4,15 @@ class Solution {
         HashMap<Integer, Integer> hm = new HashMap<>();
         while(r<fruits.length){
             hm.put(fruits[r],hm.getOrDefault(fruits[r],0)+1);
-            while(hm.size()>2){
+            if(hm.size()>2){
                 hm.put(fruits[l], hm.get(fruits[l]) - 1);
                 if(hm.get(fruits[l])==0){
                     hm.remove(fruits[l]);
                 }
                 l++;
             }
-            maxLen = Math.max(maxLen, r - l + 1);
+
+            if(hm.size()<=2) maxLen = Math.max(maxLen, r - l + 1);
             r++;
         }
         return maxLen;

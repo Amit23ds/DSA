@@ -6,7 +6,7 @@ class Solution {
         for (int num = 0; num < subsets; num++) {
             List<Integer> subset = new ArrayList<>();
             for (int i = 0; i < n; i++) {
-                if ((num & (1 << i)) != 0) {
+                if ((num & (1 << i)) != 0) { // check the set bit
                     subset.add(nums[i]);
                 }
             }

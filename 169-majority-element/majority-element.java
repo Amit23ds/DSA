@@ -16,6 +16,12 @@ class Solution {
         }
         // to verify
 
-        return el;
+        int cnt=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]==el) cnt++;
+        }
+        if(cnt>n/2) return el;
+
+        return -1;
     }
 }

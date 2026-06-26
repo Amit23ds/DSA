@@ -1,41 +1,36 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        int cnt1=1, cnt2=0;
-        int el1=nums[0], el2=Integer.MIN_VALUE;
-        int n=nums.length;
-        for(int i=1; i<n;i++){
-            if(nums[i]==el1){
-                cnt1++;
-            }
-            else if(nums[i]==el2){
-                cnt2++;
-            }
-            else if(cnt1==0){
+        int el1=-1, el2=-1;
+        int v1=0, v2=0;
+        for(int i=0;i<nums.length;i++){
+            if(v1==0 && nums[i]!=el2){
                 el1=nums[i];
-                cnt1++;
+                v1=1;
             }
-            else if(cnt2==0){
+            else if(v2==0 && nums[i]!=el1){
                 el2=nums[i];
-                cnt2++;
+                v2=1;
             }
-            else{
-                cnt1--;
-                cnt2--;
+            else if(nums[i]==el1){
+                v1++;
+            }else if(nums[i]==el2){
+                v2++;
+            }else{
+                v1--;
+                v2--;
             }
         }
-        cnt1 = 0;
-        cnt2 = 0;
 
-        for (int num : nums) {
-            if (num == el1) cnt1++;
-            else if (num == el2) cnt2++;
+        int cnt1=0, cnt2=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==el1) cnt1++;
+            else if(nums[i]==el2) cnt2++;
+            
         }
-         List<Integer> res = new ArrayList<>();
+        List<Integer> ls = new ArrayList<>();
+        if(cnt1>nums.length/3) ls.add(el1);
+        if(cnt2>nums.length/3) ls.add(el2);
 
-        if (cnt1 > n / 3) res.add(el1);
-        if (cnt2 > n / 3) res.add(el2);
-
-        return res;
-
+        return ls;
     }
 }

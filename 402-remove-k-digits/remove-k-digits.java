@@ -1,30 +1,35 @@
 class Solution {
-    public String removeKdigits(String nums, int k) {
-        Stack<Character> st = new Stack<>();
-        for (int i = 0; i < nums.length(); i++) {
-            char digit = nums.charAt(i); 
-            while (!st.isEmpty() && k > 0 && st.peek() > digit) {
-                st.pop();
+    public String removeKdigits(String num, int k) {
+        char[] nums = num.toCharArray();
+        int n = nums.length;
+
+        if (n == k)
+            return "0";
+
+        int top = -1;
+
+        for (int i = 0; i < n; i++) {
+            while (top >= 0 && k > 0 && nums[top] > nums[i]) {
+                top--;
                 k--;
             }
 
-            st.push(digit);
+            nums[++top] = nums[i];
         }
 
-        while (k > 0) {
-            st.pop(); 
-            k--; 
-        }
-        if (st.isEmpty()) return "0";
-        StringBuilder res = new StringBuilder();
-        while (!st.isEmpty()) {
-            res.append(st.pop());
-        }
-        while (res.length() > 0 && res.charAt(res.length() - 1) == '0') {
-            res.deleteCharAt(res.length() - 1);
-        }
-        res.reverse();
-        if (res.length() == 0) return "0";
-        return res.toString();
+        if (k > 0)
+            top -= k;
+
+        int idx = 0;
+        while (idx < top && nums[idx] == '0')
+            idx++;
+
+        int len = top - idx + 1;
+
+        if (len <= 0)
+            return "0";
+
+        return new String(nums, idx, len);
+
     }
 }

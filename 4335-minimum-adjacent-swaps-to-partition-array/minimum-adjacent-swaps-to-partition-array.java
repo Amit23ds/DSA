@@ -12,7 +12,7 @@ class Solution {
                 res += count2;
                 count1++;
             }
-            else {
+            else{
                 count2++;
             }
         }

@@ -28,11 +28,11 @@ class Solution {
                 ans=ans*10+digit;
             }else if(!Character.isDigit(c)){
                 ans=ans*sign;
-                if(ans>Integer.MAX_VALUE){
-                    return Integer.MAX_VALUE;
-                }else if(ans<Integer.MIN_VALUE){
-                    return Integer.MIN_VALUE;
-                }
+                // if(ans>Integer.MAX_VALUE){
+                //     return Integer.MAX_VALUE;
+                // }else if(ans<Integer.MIN_VALUE){
+                //     return Integer.MIN_VALUE;
+                // }
                 return (int)ans;
             }
             i++;

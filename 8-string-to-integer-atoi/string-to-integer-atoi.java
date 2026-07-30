@@ -21,7 +21,7 @@ class Solution {
             if(Character.isDigit(c)){
                 int digit=c-'0';
                 if (ans > Integer.MAX_VALUE / 10 ||
-                    (ans == Integer.MAX_VALUE / 10 && digit > 7)){
+                    (ans == Integer.MAX_VALUE / 10 && digit > (sign == 1 ? 7 : 8))){
                         if(sign==1) return Integer.MAX_VALUE;
                         else return Integer.MIN_VALUE;
                 }

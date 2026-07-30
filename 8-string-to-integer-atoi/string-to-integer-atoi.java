@@ -26,13 +26,11 @@ class Solution {
                         else return Integer.MIN_VALUE;
                 }
                 ans=ans*10+digit;
-            }else if(!Character.isDigit(c)){
-                ans=ans*sign;
-                return (int)ans;
+            }else{
+                break;
             }
             i++;
         }
-        ans=ans*sign;
-        return (int)ans;
+        return (int)(ans*sign);
     }
 }

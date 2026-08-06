@@ -11,7 +11,7 @@ class Solution {
             return;
         }
         int next=idx+1;
-        while(next<nums.length && nums[next]==nums[idx]) {
+        while(next<nums.length && nums[next]==nums[idx]){
             next++;
         }
         helper(nums,next,temp);

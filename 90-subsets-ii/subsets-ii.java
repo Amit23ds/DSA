@@ -10,7 +10,7 @@ class Solution {
             result.add(new ArrayList<>(temp));
             return;
         }
-        int next = idx + 1;
+        int next=idx+1;
         while(next<nums.length && nums[next]==nums[idx]) {
             next++;
         }

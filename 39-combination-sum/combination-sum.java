@@ -1,5 +1,5 @@
 class Solution {
-    List<List<Integer>> result = new ArrayList<>();
+    List<List<Integer>> result=new ArrayList<>();
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         helper(candidates,0,target,new ArrayList<>());
         return result;
@@ -9,10 +9,10 @@ class Solution {
             result.add(new ArrayList<>(temp));
             return;
         }
-        if(target<0 || idx>=nums.length) return;
+        if(idx>=nums.length || target<0) return;
+        helper(nums,idx+1,target,temp);
         temp.add(nums[idx]);
         helper(nums,idx,target-nums[idx],temp);
         temp.remove(temp.size()-1);
-        helper(nums,idx+1,target,temp);
     }
 }

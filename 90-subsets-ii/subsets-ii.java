@@ -10,15 +10,13 @@ class Solution {
             result.add(new ArrayList<>(temp));
             return;
         }
-        int next=idx+1;
+        int next=idx;
         while(next<nums.length && nums[next]==nums[idx]){
             next++;
         }
         helper(nums,next,temp);
-        //helper(nums,idx+1,temp);
         temp.add(nums[idx]);
         helper(nums,idx+1,temp);
-        temp.remove(temp.size() - 1);
+        temp.remove(temp.size()-1);
     }
-
 }

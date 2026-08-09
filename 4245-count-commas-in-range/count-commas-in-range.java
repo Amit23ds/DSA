@@ -1,9 +1,10 @@
 class Solution {
     public int countCommas(int n) {
-        long ans=0;
-        for(long x=1000;x<=n;x*=1000){
-            ans+=(n-x)+1;
-        }
-        return (int)ans;
+        // long ans=0;
+        // for(long x=1000;x<=n;x*=1000){
+        //     ans+=(n-x)+1;
+        // }
+        // return (int)ans;
+        return Math.max(0, n - 999);
     }
 }

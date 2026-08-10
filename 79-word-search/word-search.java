@@ -9,6 +9,7 @@ class Solution {
         }
         return false;
     }
+    int[][] direction={{0,1},{0,-1},{1,0},{-1,0}};
     public boolean helper(char[][] board,String word,int i,int j,int idx){
         if(idx==word.length()){
             return true;
@@ -18,22 +19,29 @@ class Solution {
         }
         char temp=board[i][j];
         board[i][j]='$';
-        if(helper(board,word,i+1,j,idx+1)){
-            board[i][j]=temp;
-            return true;
+        for(int[] dir: direction){
+            int new_i=i+dir[0];
+            int new_j=j+dir[1];
+            if(helper(board,word,new_i,new_j,idx+1)){
+                return true;
+            }
         }
-        if(helper(board,word,i-1,j,idx+1)) {
-            board[i][j]=temp;
-            return true;
-        }
-        if(helper(board,word,i,j+1,idx+1)){
-            board[i][j]=temp;
-            return true;
-        }
-        if(helper(board,word,i,j-1,idx+1)) {
-            board[i][j]=temp;
-            return true;
-        }
+        // if(helper(board,word,i+1,j,idx+1)){
+        //     board[i][j]=temp;
+        //     return true;
+        // }
+        // if(helper(board,word,i-1,j,idx+1)) {
+        //     board[i][j]=temp;
+        //     return true;
+        // }
+        // if(helper(board,word,i,j+1,idx+1)){
+        //     board[i][j]=temp;
+        //     return true;
+        // }
+        // if(helper(board,word,i,j-1,idx+1)) {
+        //     board[i][j]=temp;
+        //     return true;
+        // }
         board[i][j]=temp;
         return false;
     }

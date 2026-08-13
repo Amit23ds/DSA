@@ -4,18 +4,6 @@ class Solution {
         helper(s,0,new ArrayList<>());
         return result;
     }
-    boolean isPalindrome(String s){
-        s=s.toLowerCase();
-        int i=0, j=s.length()-1;
-        while(i<j){
-            if(s.charAt(i)!=s.charAt(j)){
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
-    }
     void helper(String s,int idx,List<String> temp){
         if(idx>=s.length()){
             result.add(new ArrayList<>(temp));
@@ -28,5 +16,17 @@ class Solution {
                 temp.remove(temp.size()-1);
             }
         }
+    }
+    boolean isPalindrome(String s){
+        s=s.toLowerCase();
+        int i=0, j=s.length()-1;
+        while(i<j){
+            if(s.charAt(i)!=s.charAt(j)){
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
     }
 }

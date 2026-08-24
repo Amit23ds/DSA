@@ -1,27 +1,26 @@
 class Solution {
-    int helper(HashMap<Integer,Integer> hm){
-        int msf=hm.keySet().iterator().next();
-        for(Integer key:hm.keySet()){
-            if(hm.get(key)<hm.get(msf) || hm.get(key)==hm.get(msf) && key>msf){
-                msf=key;
-            }
-        }
-        return msf;
-    }
     public int[] frequencySort(int[] nums) {
         HashMap<Integer,Integer> hm = new HashMap<>();
         for(int num:nums){
             hm.put(num,hm.getOrDefault(num,0)+1);
         }
-        int j=0;
+        PriorityQueue<int[]> pq=new PriorityQueue<>((a,b)->{
+                                if(a[1]!=b[1]){
+                                    return a[1]-b[1];
+                                }
+                                return b[0]-a[0];
+                                                });
+        for(int num:hm.keySet()){
+            pq.add(new int[]{num,hm.get(num)});
+        }
         int[] res=new int[nums.length];
-        while(hm.size()!=0){
-            int x=helper(hm);
+        int i=0;
+        while(!pq.isEmpty()){
+            int x=pq.remove()[0];
             int freq=hm.get(x);
-            for(int i=0;i<freq;i++){
-                res[j++]=x;
+            for(int j=0;j<freq;j++){
+                res[i++]=x;
             }
-            hm.remove(x);
         }
         return res;
     }

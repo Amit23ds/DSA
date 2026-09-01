@@ -4,8 +4,6 @@ class Solution {
             intervals,
             (a, b) -> Integer.compare(a[0], b[0])
         );
-        int n=intervals.length;
-        int m=intervals[0].length;
 
         List<int[]> ans = new ArrayList<>();
 

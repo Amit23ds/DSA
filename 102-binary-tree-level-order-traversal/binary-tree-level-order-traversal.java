@@ -15,17 +15,17 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> ans=new ArrayList<>();
-        solve(root,0,ans);
-        return ans;
+        List<List<Integer>> res=new ArrayList<>();
+        solve(root,0,res);
+        return res;
     }
-    private void solve(TreeNode root,int lvl,List<List<Integer>> ans){
+    void solve(TreeNode root,int lvl,List<List<Integer>> res){
         if(root==null) return;
-        if(lvl==ans.size()){
-            ans.add(new ArrayList<>());
+        if(lvl==res.size()){
+            res.add(new ArrayList<>());
         }
-        ans.get(lvl).add(root.val);
-        solve(root.left,lvl+1,ans);
-        solve(root.right,lvl+1,ans);
+        res.get(lvl).add(root.val);
+        solve(root.left,lvl+1,res);
+        solve(root.right,lvl+1,res);
     }
 }

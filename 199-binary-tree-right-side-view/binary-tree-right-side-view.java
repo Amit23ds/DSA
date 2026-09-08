@@ -13,36 +13,18 @@
  *     }
  * }
  */
-class Tuple{
-    TreeNode node;
-    int row;
-    public Tuple(TreeNode node,int row){
-        this.node=node;
-        this.row=row;
-    }
-}
 class Solution {
     public List<Integer> rightSideView(TreeNode root) {
-        TreeMap<Integer,Integer> map=new TreeMap<>();
-        Queue<Tuple> q=new LinkedList<>();
-        List<Integer> list=new ArrayList<>();
-
-        if(root==null) return list;
-        q.offer(new Tuple(root,0));
-        while(!q.isEmpty()){
-            Tuple tuple=q.poll();
-            TreeNode node=tuple.node;
-            int x=tuple.row;
-            map.put(x,node.val);
-            if(node.left!=null)
-                q.offer(new Tuple(node.left,x+1));
-
-            if(node.right!=null)
-                q.offer(new Tuple(node.right,x+1));
+        List<Integer> res=new ArrayList<>();
+        helper(root,res,0);
+        return res;
+    }
+    void helper(TreeNode curr,List<Integer> res,int lvl){
+        if(curr==null) return;
+        if(lvl==res.size()){
+            res.add(curr.val);
         }
-        for(Map.Entry<Integer,Integer> entry:map.entrySet()){
-            list.add(entry.getValue());
-        }
-        return list;
+        helper(curr.right,res,lvl+1);
+        helper(curr.left,res,lvl+1);
     }
 }

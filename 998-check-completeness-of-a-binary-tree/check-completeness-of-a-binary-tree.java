@@ -17,10 +17,10 @@ class Solution {
     public boolean isCompleteTree(TreeNode root) {
         Queue<TreeNode> q=new LinkedList<>();
         q.add(root);
-        TreeNode curr=null;
+        //TreeNode curr=null;
         boolean flag=false;
         while(!q.isEmpty()){
-            curr=q.poll();
+            TreeNode curr=q.poll();
             if(curr==null) flag=true;
             else{
                 if(flag==true) return false;

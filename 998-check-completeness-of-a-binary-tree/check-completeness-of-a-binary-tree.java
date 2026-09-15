@@ -17,7 +17,6 @@ class Solution {
     public boolean isCompleteTree(TreeNode root) {
         Queue<TreeNode> q=new LinkedList<>();
         q.add(root);
-        //TreeNode curr=null;
         boolean flag=false;
         while(!q.isEmpty()){
             TreeNode curr=q.poll();

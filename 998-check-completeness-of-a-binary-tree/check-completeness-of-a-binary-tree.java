@@ -15,7 +15,6 @@
  */
 class Solution {
     public boolean isCompleteTree(TreeNode root) {
-        //if(root==null) return true;
         Queue<TreeNode> q=new LinkedList<>();
         q.add(root);
         TreeNode curr=null;

@@ -11,7 +11,6 @@ class Solution {
                 }
                 l++;
             }
-
             if(hm.size()<=2) maxLen = Math.max(maxLen, r - l + 1);
             r++;
         }

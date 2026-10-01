@@ -9,7 +9,7 @@ class Solution {
         while(i<n){
             if(j<s.length){
                 if(g[i]<=s[j]){
-                    cnt++;
+                    //cnt++;
                     i++;
                     j++;
                 }else{
@@ -19,6 +19,6 @@ class Solution {
                 break;
             }
         }
-        return cnt;
+        return i;
     }
 }

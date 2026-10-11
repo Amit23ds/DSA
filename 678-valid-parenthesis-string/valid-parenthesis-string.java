@@ -11,7 +11,6 @@ class Solution {
             }
             if(open<0) return false;
         }
-
         int close=0;
         for(int i=n-1;i>=0;i--){
             char ch=s.charAt(i);

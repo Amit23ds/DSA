@@ -6,19 +6,19 @@ class Solution {
         while(nums[i]!=0){
             i++;
         }
-        boolean asc=true;
-        boolean des=true;
+        boolean inc=true;
+        boolean dec=true;
         for(int j=1;j<n;j++){
             int temp=nums[(i+j)%n];
             if(temp!=j){
-                asc=false;
+                inc=false;
             }
             if(temp!=n-j){
-                des=false;
+                dec=false;
             }
-            if(!asc && !des) return -1;
+            if(!inc && !dec) return -1;
         }
-        if(asc){
+        if(inc){
             return Math.min(i,n-i+2);
         }
         return Math.min(n-i,i+2);

@@ -6,12 +6,26 @@ class Solution {
         Arrays.fill(colors,-1);
 
         for(int i=0;i<n;i++){
-            if(colors[i]==-1 && !bfs(graph,i,colors)){
+            if(colors[i]==-1 && !dfs(graph,i,colors,0)){
                 return false;
             }
         }
         return true;
     }
+    boolean dfs(int[][] graph,int node,int[] colors,int col){
+        colors[node]=col;
+        for(int it:graph[node]){
+            if(colors[it]==col){
+                return false;
+            }
+            if(colors[it]==-1 && !dfs(graph,it,colors,1-col)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
     boolean bfs(int[][] graph,int node,int[] colors){
         Queue<Integer> q=new LinkedList<>();
         q.offer(node);

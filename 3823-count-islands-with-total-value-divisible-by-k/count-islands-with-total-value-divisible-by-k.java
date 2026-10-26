@@ -7,7 +7,7 @@ class Solution {
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j]!=0 && !vis[i][j]){
-                   long sum=bfs(grid,vis,i,j,(long)grid[i][j]);
+                   long sum=bfs(grid,vis,i,j);
                    if(sum%k==0) cnt++;
                 }
             }
@@ -15,12 +15,12 @@ class Solution {
         return cnt;
         
     }
-    long bfs(int[][] grid,boolean[][] vis,int i,int j,long sum){
+    long bfs(int[][] grid,boolean[][] vis,int i,int j){
         int n=grid.length;
         int m=grid[0].length;
         vis[i][j]=true;
         Queue<int[]> q=new LinkedList<>();
-        long num=sum;
+        long num=grid[i][j];
         q.offer(new int[]{i,j});
         int[] dx={-1,1,0,0};
         int[] dy={0,0,-1,1};

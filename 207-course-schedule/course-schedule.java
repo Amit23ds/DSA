@@ -1,36 +1,38 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         ArrayList<ArrayList<Integer>> adj=new ArrayList<>();
-        int[] indegree=new int[numCourses];
-
         for(int c=0;c<numCourses;c++){
             adj.add(new ArrayList<>());
         }
-
+        boolean[] vis=new boolean[numCourses];
+        boolean[] pathVis=new boolean[numCourses];
         for(int[] temp:prerequisites){
             int cr=temp[0];
             int pre=temp[1];
 
             adj.get(pre).add(cr);
-            indegree[cr]++;
         }
-        Queue<Integer> q=new LinkedList<>();
         for(int i=0;i<numCourses;i++){
-            if(indegree[i]==0){
-                q.offer(i);
-            }
-        }
-        int com=0;
-        while(!q.isEmpty()){
-            int cr=q.poll();
-            com++;
-            for(int it:adj.get(cr)){
-                indegree[it]--;
-                if(indegree[it]==0){
-                    q.offer(it);
+            if(!vis[i]){
+                if(dfs(i,vis,pathVis,adj)){
+                    return false;
                 }
             }
         }
-        return com==numCourses;
+        return true; 
+    }
+    boolean dfs(int i,boolean[] vis,boolean[] pathVis,ArrayList<ArrayList<Integer>> adj){
+        vis[i]=true;
+        pathVis[i]=true;
+        for(int it:adj.get(i)){
+            if(!vis[it]){
+                if(dfs(it,vis,pathVis,adj)) return true;
+            }else if(pathVis[it]){
+                return true;
+            }
+            
+        }
+        pathVis[i]=false;
+        return false;
     }
 }

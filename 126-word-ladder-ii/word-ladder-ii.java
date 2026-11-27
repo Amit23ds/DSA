@@ -1,9 +1,7 @@
 import java.util.*;
 
 class Solution {
-    public List<List<String>> findLadders(String beginWord, 
-                                         String endWord, 
-                                         List<String> wordList) {
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
 
         Set<String> dictionary = new HashSet<>(wordList);
         List<List<String>> ans = new ArrayList<>();
@@ -62,10 +60,7 @@ class Solution {
         return ans;
     }
 
-    private void dfs(String word, String beginWord,
-                     Map<String, List<String>> parents,
-                     List<String> path, List<List<String>> ans) {
-
+    private void dfs(String word, String beginWord, Map<String, List<String>> parents, List<String> path, List<List<String>> ans) {
         if (word.equals(beginWord)) {
             List<String> sequence = new ArrayList<>(path);
             Collections.reverse(sequence);
